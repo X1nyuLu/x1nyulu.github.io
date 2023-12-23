@@ -11,30 +11,21 @@ redirect_from:
 
 Education
 ======
-* B.S. in GitHub, GitHub University, 2012
-* M.S. in Jekyll, GitHub University, 2014
-* Ph.D in Version Control Theory, GitHub University, 2018 (expected)
+* B.S. in Applied Chemistry, Beijing University of Chemical Technology, 2020
+* M.S. in Physical Chemistry, Xiamen University, 2023
+* Ph.D in Physical Chemistry, Xiamen University, 2027 (expected)
 
-Work experience
-======
-* Summer 2015: Research Assistant
-  * Github University
-  * Duties included: Tagging issues
-  * Supervisor: Professor Git
 
-* Fall 2015: Research Assistant
-  * Github University
-  * Duties included: Merging pull requests
-  * Supervisor: Professor Hub
-  
-Skills
+Research interests
 ======
-* Skill 1
-* Skill 2
-  * Sub-skill 2.1
-  * Sub-skill 2.2
-  * Sub-skill 2.3
-* Skill 3
+* Practical applications of AI-assisted spectral analysis, including
+  * Bacterial classification
+  * Clinical rapid test
+  * Chemical reaction intermediate identification
+* Modeling the relationship between spectra and molecular configration, including
+  * Molecular spectrum prediction
+  * Spectral-based structural inversion
+* Automatic workflow for spectral analysis
 
 Publications
 ======
@@ -48,12 +39,9 @@ Talks
     {% include archive-single-talk-cv.html %}
   {% endfor %}</ul>
   
-Teaching
+Work experience
 ======
-  <ul>{% for post in site.teaching %}
-    {% include archive-single-cv.html %}
-  {% endfor %}</ul>
+* Summer 2022: Artificial Intelligence Algorithm Engineer Intern
+  * Fuxi Artificial Intelligence Laboratory (NetEase)
+  * Duties included: Anti-cheating in competitive games, CTR prediction in recommendations
   
-Service and leadership
-======
-* Currently signed in to 43 different slack teams
