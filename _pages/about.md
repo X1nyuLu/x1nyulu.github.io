@@ -1,14 +1,13 @@
 ---
 permalink: /
-title: "academicpages is a ready-to-fork GitHub Pages template for academic personal websites"
+title: "About"
 excerpt: "About me"
 author_profile: true
 redirect_from: 
   - /about/
   - /about.html
 ---
-About
-======
+
 I am now a Ph.D. student in the Department of Chemistry and Chemical Technology, Xiamen University, advised by Prof. [Bin Ren](https://bren.xmu.edu.cn). 
 I received my M.S. degree in Physical Chemistry from Xiamen University in 2023. 
 My research interests include computational spectroscopy and machine learning. 
