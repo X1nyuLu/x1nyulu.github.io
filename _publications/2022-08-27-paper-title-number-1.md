@@ -2,10 +2,10 @@
 title: "Deep Learning-Enabled Raman Spectroscopic Identification of Pathogen-Derived Extracellular Vesicles and the Biogenesis Process"
 collection: publications
 permalink: /publication/2009-10-01-paper-title-number-1
-excerpt: 'This paper is about the number 1. The number 2 is left for future work.'
+excerpt: 'This paper is about the applicaton of deep learning on Raman spectroscopy and the detection of extracellular vesicles.'
 date: 2022-08-27
-venue: 'Journal 1'
-paperurl: 'http://academicpages.github.io/files/paper1.pdf'
+venue: 'Augest 27'
+paperurl: 'https://doi.org/10.1021/acs.analchem.2c02226'
 citation: 'Anal. Chem. 2022, 94, 36, 12416–12426'
 ---
 ## Abstract
