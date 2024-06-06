@@ -26,7 +26,7 @@ Research interests
 
 Recent News
 ======
-* 2024.04.25: Our paper "Deep Learning-Assisted Spectrum–Structure Correlation: State-of-the-Art and Perspectives" has been accepted by Science Advances. [link](https://pubs.acs.org/doi/10.1021/acs.analchem.4c01639)
-* 2024.02.07: Our paper "Patch-Based Convolutional Encoder: A Deep Learning Algorithm for Spectral Classification Balancing the Local and Global Information" has been accepted by Science Advances. [link](https://pubs.acs.org/doi/10.1021/acs.analchem.3c03889)
-* 2023.12.15: RamanCloud is online now! [click here to visit](https://ramancloud.xmu.edu.cn)
+* 2024.04.25: Our paper "Deep Learning-Assisted Spectrum–Structure Correlation: State-of-the-Art and Perspectives" has been accepted by Analytical Chemistry. [link](https://pubs.acs.org/doi/10.1021/acs.analchem.4c01639)
+* 2024.02.07: Our paper "Patch-Based Convolutional Encoder: A Deep Learning Algorithm for Spectral Classification Balancing the Local and Global Information" has been accepted by Analytical Chemistry. [link](https://pubs.acs.org/doi/10.1021/acs.analchem.3c03889)
+* 2023.12.15: Our online application RamanCloud is accessible now! [click here to visit](https://ramancloud.xmu.edu.cn)
 * 2023.11.22: Our paper "Rapidly determining the 3D structure of proteins by surface-enhanced Raman spectroscopy" has been accepted by Science Advances. [link](https://doi.org/10.1126/sciadv.adh8362)
