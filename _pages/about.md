@@ -8,7 +8,7 @@ redirect_from:
   - /about.html
 ---
 
-I am now a Ph.D. student in the Department of Chemistry and Chemical Technology, Xiamen University, advised by [Prof. Rong-Rong Ji](https://mac.xmu.edu.cn/rrji_en/) and [Prof. Bin Ren](https://bren.xmu.edu.cn). 
+I am now a Ph.D. student in the College of Chemistry and Chemical Engineering, Xiamen University, advised by [Prof. Bin Ren](https://bren.xmu.edu.cn) and [Prof. Rong-Rong Ji](https://mac.xmu.edu.cn/rrji_en/). 
 I received my M.S. degree in Physical Chemistry from Xiamen University in 2023. 
 My research interests include computational spectroscopy and machine learning. 
 I am also interested in the application of machine learning assisted spectroscopy in the field of biology and environment.
