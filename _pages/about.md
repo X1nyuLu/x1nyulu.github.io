@@ -45,7 +45,7 @@ My research interests span two directions: (1) modeling the relationship between
 
 * **Mar 2025** — Our paper *"Equivariant Spherical Transformer for Efficient Molecular Modeling"* is available on arXiv. [link](https://arxiv.org/abs/2505.23086)
 
-* **2025** — Our work *"Open-set deep learning-enabled single-cell Raman spectroscopy for rapid identification of airborne pathogens in real-world environments"* was published in *Science Advances*. [link](https://www.science.org/doi/10.1126/sciadv.adp7991)
+* **Jan 2025** — Our work *"Open-set deep learning-enabled single-cell Raman spectroscopy for rapid identification of airborne pathogens in real-world environments"* was published in *Science Advances*. [link](https://www.science.org/doi/10.1126/sciadv.adp7991)
 
 * **Apr 2024** — Our review *"Deep Learning-Assisted Spectrum–Structure Correlation: State-of-the-Art and Perspectives"* was accepted by *Analytical Chemistry*. [link](https://pubs.acs.org/doi/10.1021/acs.analchem.4c01639)
 
