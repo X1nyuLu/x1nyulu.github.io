@@ -39,7 +39,7 @@ My research interests span two directions: (1) modeling the relationship between
 
 * **Apr 2026** — Our paper *"Vib2Conf: AI-driven discrimination of molecular conformations from vibrational spectra"* is available on arXiv. [link](https://arxiv.org/abs/2604.24310)
 
-* **Mar 2026** — Our work *"Surein-1.0 Technical Report: A Family of Molecular Foundation Models"* is available on arXiv. [link](https://arxiv.org/abs/2603.21942)
+* **Mar 2026** — Our work *"Suiren-1.0 Technical Report: A Family of Molecular Foundation Models"* is available on arXiv. [link](https://arxiv.org/abs/2603.21942)
 
 * **Mar 2025** — Our paper *"Vib2Mol: from vibrational spectra to molecular structures — a unified deep learning framework"* is available on arXiv. [link](https://arxiv.org/abs/2503.07014)
 
