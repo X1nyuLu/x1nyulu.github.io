@@ -27,8 +27,11 @@ My research interests span two directions: (1) modeling the relationship between
 * **M.S.** in Physical Chemistry, Xiamen University, 2023
 * **Ph.D.** in Physical Chemistry, Xiamen University, 2027 (expected)
 * **Ph.D.** in Artificial Intelligence, Shanghai Innovation Institute, 2027 (expected)
-* **AI Algorithm Researcher Intern** @ Shanghai Academy of AI for Science (SAIS), Summer 2025
-* **AI Algorithm Engineer Intern** @ Fuxi AI Laboratory (NetEase), Summer 2022
+
+  ---
+* **AI Algorithm Researcher Intern** @ Shanghai Artificial Intelligence Laboratory, Shanghai, Summer 2026
+* **AI Algorithm Researcher Intern** @ Shanghai Academy of AI for Science, Shanghai, Summer 2025
+* **AI Algorithm Engineer Intern** @ Fuxi AI Laboratory, NetEase, Hangzhou, Summer 2022
 
 ---
 
