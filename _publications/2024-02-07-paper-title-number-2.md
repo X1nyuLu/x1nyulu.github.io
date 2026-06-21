@@ -2,7 +2,7 @@
 title: "Patch-Based Convolutional Encoder: A Deep Learning Algorithm for Spectral Classification Balancing the Local and Global Information"
 collection: publications
 permalink: /publication/2022-08-27-paper-title-number-1
-excerpt: 'This paper is about a deep learning model balancing the global and local information of vibratonal spetrum.'
+excerpt: 'This paper is about a deep learning model balancing the global and local information of vibrational spectrum.'
 date: 2024-02-07
 venue: 'February 7'
 paperurl: 'https://pubs.acs.org/doi/10.1021/acs.analchem.3c03889'
