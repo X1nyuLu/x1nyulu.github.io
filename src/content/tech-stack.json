@@ -1,0 +1,37 @@
+{
+  "description": "Methods and tools used across my molecular AI research.",
+  "groups": [
+    {
+      "name": "Molecular AI",
+      "icon": "mingcute:ai-line",
+      "items": [
+        "Molecular foundation models",
+        "Molecular generation",
+        "Multimodal learning"
+      ]
+    },
+    {
+      "name": "Geometric Learning",
+      "icon": "mingcute:ai-line",
+      "items": [
+        "SE(3)-equivariant networks",
+        "Graph neural networks",
+        "Transformers"
+      ]
+    },
+    {
+      "name": "Spectroscopy",
+      "icon": "mingcute:flask-line",
+      "items": [
+        "Raman spectroscopy",
+        "Infrared spectroscopy",
+        "Spectrum–structure correlation"
+      ]
+    },
+    {
+      "name": "Tools",
+      "icon": "mingcute:code-line",
+      "items": ["Python", "PyTorch", "Hugging Face", "Git"]
+    }
+  ]
+}

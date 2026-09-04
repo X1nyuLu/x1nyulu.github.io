@@ -1,0 +1,64 @@
+---
+import { getCollection } from "astro:content"
+
+import { PROFILE, SITE } from "@site-config"
+import { loadSelectedPublications } from "@/lib/publications/loader"
+import Layout from "@/layouts/Layout.astro"
+import CardGroup from "@/components/base/card/CardGroup.astro"
+import Section from "@/components/layout/Section.astro"
+import Profile from "@/components/profile/Profile.astro"
+import PubCard from "@/components/publications/PubCard.astro"
+import ExperienceTimeline from "@/components/timeline/ExperienceTimeline.astro"
+
+const {
+  home: { careerHighlightCount, publicationCount },
+} = SITE
+
+const careerHighlights =
+  careerHighlightCount > 0 ? await getCollection("experience") : []
+const cvHref =
+  typeof PROFILE.links.cv === "object"
+    ? PROFILE.links.cv?.href
+    : PROFILE.links.cv
+const selectedPublications =
+  publicationCount > 0
+    ? (await loadSelectedPublications()).slice(0, publicationCount)
+    : []
+---
+
+<Layout title="Home">
+  <Profile profile={PROFILE} />
+
+  {selectedPublications.length > 0 && (
+      <Section title="Selected publications" moreLink="/publications">
+        <CardGroup class="selected-publications">
+          {selectedPublications.map((pub) => (
+            <PubCard pub={pub} filterableTags={false} />
+          ))}
+        </CardGroup>
+      </Section>
+    )}
+
+  {careerHighlights.length > 0 && (
+      <Section title="Career highlights" moreLink={cvHref} moreText="see CV →">
+        <ExperienceTimeline
+          entries={careerHighlights}
+          limit={careerHighlightCount}
+          itemClass="home-experience-content"
+        />
+      </Section>
+    )}
+</Layout>
+
+<style>
+  .selected-publications {
+    gap: var(--space-s);
+  }
+
+  :global(.home-experience-content) {
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+  }
+</style>

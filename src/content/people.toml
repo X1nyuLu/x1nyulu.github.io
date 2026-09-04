@@ -1,0 +1,11 @@
+[xinyu-lu]
+id = "xinyu-lu"
+name = "Xinyu Lu"
+avatar = "/img/profile.jpg"
+bio = "Researcher working on molecular AI, vibrational spectroscopy, and geometric learning."
+affiliation = "Xiamen University · Shanghai Innovation Institute"
+
+[xinyu-lu.links]
+email = "xinyulu@stu.xmu.edu.cn"
+github = "https://github.com/X1nyuLu"
+googleScholar = "https://scholar.google.com/citations?user=ZU9k5qQAAAAJ&hl=en"

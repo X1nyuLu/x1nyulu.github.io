@@ -1,0 +1,59 @@
+[
+  {
+    "id": "shlab-2026",
+    "category": "research",
+    "title": "AI Algorithm Researcher Intern",
+    "org": "Shanghai Artificial Intelligence Laboratory",
+    "startDate": "2026-06",
+    "endDate": "2026-08",
+    "location": "Shanghai, China",
+    "description": "Research on molecular foundation models and AI for scientific discovery."
+  },
+  {
+    "id": "sais-2025",
+    "category": "research",
+    "title": "AI Algorithm Researcher Intern",
+    "org": "Shanghai Academy of AI for Science",
+    "startDate": "2025-06",
+    "endDate": "2025-08",
+    "location": "Shanghai, China",
+    "description": "Developed equivariant deep learning methods for molecular modeling."
+  },
+  {
+    "id": "phd-2023",
+    "category": "education",
+    "title": "Ph.D. Student in Physical Chemistry and Artificial Intelligence",
+    "org": "Xiamen University · Shanghai Innovation Institute",
+    "startDate": "2023-09",
+    "endDate": "2027-06",
+    "location": "Xiamen · Shanghai, China",
+    "description": "Joint research training in molecular spectroscopy and artificial intelligence; expected 2027."
+  },
+  {
+    "id": "netease-2022",
+    "category": "research",
+    "title": "AI Algorithm Engineer Intern",
+    "org": "Fuxi AI Laboratory, NetEase",
+    "startDate": "2022-06",
+    "endDate": "2022-08",
+    "location": "Hangzhou, China"
+  },
+  {
+    "id": "master-2020",
+    "category": "education",
+    "title": "M.S. in Physical Chemistry",
+    "org": "Xiamen University",
+    "startDate": "2020-09",
+    "endDate": "2023-06",
+    "location": "Xiamen, China"
+  },
+  {
+    "id": "bachelor-2016",
+    "category": "education",
+    "title": "B.S. in Applied Chemistry",
+    "org": "Beijing University of Chemical Technology",
+    "startDate": "2016-09",
+    "endDate": "2020-06",
+    "location": "Beijing, China"
+  }
+]
