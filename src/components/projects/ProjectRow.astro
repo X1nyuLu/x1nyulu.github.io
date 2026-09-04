@@ -1,0 +1,271 @@
+---
+import type { CollectionEntry } from "astro:content"
+
+import { getProjectLinks } from "@/lib/projects"
+import { slugify } from "@/lib/string-manipulation"
+import Icon from "@/components/base/Icon.astro"
+import Link from "@/components/base/Link.astro"
+
+interface Props {
+  project: CollectionEntry<"projects">
+}
+
+const { project } = Astro.props
+const { title, selected, code, doc, paper, url, release, skills, cover } =
+  project.data
+
+const links = getProjectLinks(code, doc, paper, url, release)
+
+// The detail page is the richer destination when it exists; otherwise send
+// people straight to the thing itself, preferring the live URL over a repo.
+const hasDetailPage = !!project.body?.trim()
+const primaryLink = links.find((link) => link.type === "url") ?? links[0]
+const titleHref = hasDetailPage ? `/projects/${project.id}` : primaryLink?.href
+---
+
+<article
+  class:list={["project-row", { "is-highlighted": selected }]}
+  data-project-skills={skills.map((skill) => slugify(skill)).join(",")}
+>
+  {cover && (
+    <div class:list={["project-cover", `project-cover--${cover}`]} aria-hidden="true">
+      <span class="project-cover-spectrum"></span>
+      <span class="project-cover-orbit project-cover-orbit--one"></span>
+      <span class="project-cover-orbit project-cover-orbit--two"></span>
+      <span class="project-cover-core"></span>
+    </div>
+  )}
+  <div class="project-row-body">
+    <div class="project-row-head">
+      <h3 class="project-row-title">
+        {selected && <span class="sr-only">Featured project: </span>}
+        {titleHref ? (
+            <Link href={titleHref} underline>
+              {title}
+            </Link>
+          ) : (
+            title
+          )}
+      </h3>
+      {links.length > 0 && (
+          <ul class="project-row-links">
+            {links.map(({ href, icon, label }) => (
+              <li>
+                <Link href={href} class="project-row-link">
+                  <Icon name={icon} />
+                  <span>{label}</span>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        )}
+    </div>
+
+    {project.data.description && (
+        <p class="project-row-description">{project.data.description}</p>
+      )}
+
+    {skills.length > 0 && <p class="project-row-skills">{skills.join(" · ")}</p>}
+  </div>
+</article>
+
+<style>
+  .project-row {
+    display: grid;
+    grid-template-columns: 5.5rem 1fr;
+    gap: var(--space-xs);
+    align-items: stretch;
+    padding-block: var(--space-xs);
+  }
+
+  .project-row-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: var(--space-3xs);
+    min-inline-size: 0;
+  }
+
+  .project-cover {
+    position: relative;
+    min-block-size: 5.5rem;
+    overflow: hidden;
+    border: 1px solid color-mix(in oklch, var(--primary) 22%, var(--border));
+    border-radius: var(--radius-md);
+    background:
+      radial-gradient(
+        circle at 72% 28%,
+        color-mix(in oklch, var(--primary) 35%, transparent),
+        transparent 34%
+      ),
+      linear-gradient(
+        145deg,
+        color-mix(in oklch, var(--accent) 72%, var(--background)),
+        var(--background)
+      );
+  }
+
+  .project-cover-spectrum {
+    position: absolute;
+    inset: 58% 8% auto;
+    block-size: 1px;
+    background: var(--primary);
+    box-shadow:
+      0 -0.55rem 0 color-mix(in oklch, var(--primary) 35%, transparent),
+      0 0.5rem 0 color-mix(in oklch, var(--primary) 55%, transparent);
+    transform: rotate(-8deg);
+  }
+
+  .project-cover-spectrum::before,
+  .project-cover-spectrum::after {
+    content: "";
+    position: absolute;
+    inset-block-end: 0;
+    inline-size: 2px;
+    background: var(--primary);
+  }
+
+  .project-cover-spectrum::before {
+    inset-inline-start: 28%;
+    block-size: 1.5rem;
+  }
+  .project-cover-spectrum::after {
+    inset-inline-start: 66%;
+    block-size: 2.2rem;
+  }
+
+  .project-cover-orbit {
+    position: absolute;
+    inset-block-start: 21%;
+    inset-inline-start: 57%;
+    inline-size: 2.2rem;
+    block-size: 2.2rem;
+    border: 1px solid color-mix(in oklch, var(--primary) 62%, transparent);
+    border-radius: 50%;
+  }
+
+  .project-cover-orbit--one {
+    transform: rotate(58deg) scaleY(0.45);
+  }
+  .project-cover-orbit--two {
+    transform: rotate(-58deg) scaleY(0.45);
+  }
+
+  .project-cover-core {
+    position: absolute;
+    inset-block-start: calc(21% + 0.9rem);
+    inset-inline-start: calc(57% + 0.9rem);
+    inline-size: 0.4rem;
+    block-size: 0.4rem;
+    border-radius: 50%;
+    background: var(--primary);
+    box-shadow: 0 0 1rem var(--primary);
+  }
+
+  .project-cover--foundation {
+    filter: hue-rotate(22deg);
+  }
+  .project-cover--equivariant {
+    filter: hue-rotate(-24deg);
+  }
+  .project-cover--conformation {
+    filter: saturate(0.78);
+  }
+
+  @media (width < 32rem) {
+    .project-row {
+      grid-template-columns: 4.5rem 1fr;
+    }
+    .project-cover {
+      min-block-size: 4.5rem;
+    }
+  }
+
+  .project-row[hidden] {
+    display: none;
+  }
+
+  .project-row-head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: var(--space-3xs) var(--space-xs);
+  }
+
+  .project-row-title {
+    position: relative;
+    margin: 0;
+    font-size: var(--step-0);
+    font-weight: var(--font-weight-medium);
+    line-height: calc(var(--leading-offset) + 1em);
+  }
+
+  /* Featured rows get a star in the gutter rather than a badge, echoing the
+     one on section headings. Positioned absolutely so the marker never shifts
+     the title and every row keeps the same left edge to scan down. */
+  .project-row.is-highlighted .project-row-title::before {
+    content: "";
+    position: absolute;
+    inset-block-start: 0.525rem;
+    inset-inline-start: -1rem;
+    inline-size: 0.6rem;
+    block-size: 0.6rem;
+    background: var(--primary);
+    clip-path: polygon(
+      50% 0,
+      58% 40%,
+      100% 50%,
+      58% 60%,
+      50% 100%,
+      42% 60%,
+      0 50%,
+      42% 40%
+    );
+    opacity: 0.75;
+    transition:
+      opacity var(--motion-duration) var(--motion-ease),
+      transform var(--motion-duration) var(--motion-ease);
+  }
+
+  .project-row:hover .project-row-title::before,
+  .project-row:focus-within .project-row-title::before {
+    opacity: 1;
+    transform: scale(1.5) rotate(25deg);
+  }
+
+  .project-row-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2xs);
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+
+  .project-row-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.2rem;
+    color: var(--muted-foreground);
+    font-size: var(--step--1);
+  }
+
+  .project-row-link svg {
+    inline-size: 0.875em;
+    block-size: 0.875em;
+  }
+
+  .project-row-description {
+    margin: 0;
+    color: var(--muted-foreground);
+    font-size: var(--step--1);
+    line-height: calc(var(--leading-offset) + 1em);
+  }
+
+  .project-row-skills {
+    margin: 0;
+    color: var(--muted-foreground);
+    font-size: var(--step--1);
+    opacity: 0.75;
+  }
+</style>
