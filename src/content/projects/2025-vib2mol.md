@@ -1,6 +1,6 @@
 ---
 title: Vib2Mol
-description: A versatile deep learning model that translates vibrational spectra into molecular structures.
+description: A unified deep learning framework that translates vibrational spectra into molecular structures.
 fromDate: 2024-09
 paper: https://arxiv.org/abs/2503.07014
 url: https://huggingface.co/xinyulu/vib2mol

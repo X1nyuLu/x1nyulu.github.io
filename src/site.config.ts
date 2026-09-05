@@ -8,9 +8,9 @@ import type {
 
 export const SITE: SiteConfig = {
   title: "Xinyu Lu",
-  homeTitle: "Xinyu Lu — Molecular AI & Vibrational Spectroscopy",
+  homeTitle: "Xinyu Lu — Molecular AI & Spectrum–Structure Learning",
   description:
-    "Molecular AI research across vibrational spectroscopy, molecular generation, and geometric learning.",
+    "Molecular AI for bidirectional spectrum–structure learning and equivariant molecular modeling.",
   href: "https://x1nyulu.github.io",
   author: "Xinyu Lu",
   dir: "ltr",
@@ -55,7 +55,7 @@ export const SITE: SiteConfig = {
 export const PROFILE: ProfileConfig = {
   name: SITE.title,
   othernames: "逯新宇",
-  tagline: "Molecular AI · Spectroscopy · Geometric Learning",
+  tagline: "Molecular AI · Spectra ↔ Structures · Geometric AI",
   email: "xinyulu@stu.xmu.edu.cn",
   location: "Xiamen · Shanghai, China",
   links: {

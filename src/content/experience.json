@@ -5,29 +5,28 @@
     "title": "AI Algorithm Researcher Intern",
     "org": "Shanghai Artificial Intelligence Laboratory",
     "startDate": "2026-06",
-    "endDate": "2026-08",
     "location": "Shanghai, China",
-    "description": "Research on molecular foundation models and AI for scientific discovery."
+    "description": "Developing multimodal AI methods for spectroscopic reasoning and molecular structure elucidation."
   },
   {
     "id": "sais-2025",
     "category": "research",
     "title": "AI Algorithm Researcher Intern",
     "org": "Shanghai Academy of AI for Science",
-    "startDate": "2025-06",
-    "endDate": "2025-08",
+    "startDate": "2025-03",
+    "endDate": "2026-04",
     "location": "Shanghai, China",
-    "description": "Developed equivariant deep learning methods for molecular modeling."
+    "description": "Developed equivariant architectures and large-scale data pipelines for molecular foundation models."
   },
   {
     "id": "phd-2023",
     "category": "education",
-    "title": "Ph.D. Student in Physical Chemistry and Artificial Intelligence",
-    "org": "Xiamen University · Shanghai Innovation Institute",
+    "title": "Ph.D. Candidate in Physical Chemistry",
+    "org": "Xiamen University",
     "startDate": "2023-09",
     "endDate": "2027-06",
     "location": "Xiamen · Shanghai, China",
-    "description": "Joint research training in molecular spectroscopy and artificial intelligence; expected 2027."
+    "description": "Joint research training at Shanghai Innovation Institute in molecular AI and spectroscopy; expected 2027."
   },
   {
     "id": "netease-2022",
