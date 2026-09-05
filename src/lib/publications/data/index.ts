@@ -29,6 +29,7 @@ const METADATA_FIELDS = [
   "equalsecond",
   "equalthird",
   "equallast",
+  "authorrole",
   "venue",
   "image",
   "imagealt",

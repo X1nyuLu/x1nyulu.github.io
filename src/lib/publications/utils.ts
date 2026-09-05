@@ -43,7 +43,7 @@ interface CitationEntry {
   [key: string]: unknown
 }
 
-const BIBTEX_EXCLUDED_FIELD_PATTERN = /^(?:selected|equal|image)/i
+const BIBTEX_EXCLUDED_FIELD_PATTERN = /^(?:selected|equal|authorrole|image)/i
 
 /** Publication return type - normalized fields plus flexible custom metadata/link fields. */
 export interface Publication {
@@ -65,6 +65,7 @@ export interface Publication {
   award?: string
   image?: string
   imagealt?: string
+  authorrole?: string
   arxiv?: string
   eprint?: string
   venue?: string
@@ -613,15 +614,24 @@ export function getPublicationData(
     typeof rawEqualFirst === "string" || typeof rawEqualFirst === "number"
       ? Number.parseInt(String(rawEqualFirst), 10)
       : 0
+  const explicitAuthorRole =
+    publication.authorrole?.trim().toLowerCase() === "co-first"
+      ? "Co-first author"
+      : publication.authorrole?.trim().toLowerCase() === "first"
+        ? "First author"
+        : undefined
   const isPreprint =
     publication.journal?.toLowerCase().includes("arxiv preprint") === true ||
     (!publication.doi && Boolean(publication.arxiv))
   const authorRole =
-    authorPosition === 0
-      ? equalFirstCount > 0
-        ? "Co-first author"
-        : "First author"
-      : undefined
+    explicitAuthorRole ??
+    (authorPosition >= 0 &&
+    equalFirstCount > 1 &&
+    authorPosition < equalFirstCount
+      ? "Co-first author"
+      : authorPosition === 0
+        ? "First author"
+        : undefined)
 
   return {
     title: publication.title || "",
