@@ -3,6 +3,7 @@ import Link from "@/components/base/Link.astro"
 
 interface Props {
   title: string
+  id?: string
   class?: string
   spacing?: "default" | "none"
   moreLink?: string
@@ -12,6 +13,7 @@ interface Props {
 const {
   class: className,
   title,
+  id = title.toLowerCase(),
   spacing = "default",
   moreLink,
   moreText = "see all →",
@@ -20,7 +22,7 @@ const {
 
 <section class:list={["section-block", className]} data-spacing={spacing}>
   <section-heading>
-    <h2 id={title.toLowerCase()}>{title}</h2>
+    <h2 id={id}>{title}</h2>
     {moreLink && (
         <Link href={moreLink} underline class="section-more">
           {moreText}
@@ -58,6 +60,10 @@ const {
     font-size: var(--step-2);
     line-height: 1.333;
     font-weight: var(--font-weight-medium);
+    scroll-margin-block-start: calc(
+      var(--header-height, 4rem) +
+      var(--space-s)
+    );
   }
 
   h2::before {

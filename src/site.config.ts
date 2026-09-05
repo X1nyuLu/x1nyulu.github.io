@@ -62,7 +62,7 @@ export const PROFILE: ProfileConfig = {
     googleScholar:
       "https://scholar.google.com/citations?user=ZU9k5qQAAAAJ&hl=en",
     researchgate: "https://www.researchgate.net/profile/Xinyu-Lu-40",
-    cv: "/cv",
+    cv: "/#cv",
   },
   highlightLinks: ["googleScholar", "github"],
   linksPlacement: {
@@ -73,8 +73,8 @@ export const PROFILE: ProfileConfig = {
 }
 
 export const NAV_LINKS: LinkConfig[] = [
-  { href: "/publications", label: "Publications" },
-  { href: "/cv", label: "CV" },
+  { href: "/#publications", label: "Publications" },
+  { href: "/#cv", label: "CV" },
 ]
 
 export const NAVIGATION: LinkConfig[] = NAV_LINKS.map(({ href, label }) => ({

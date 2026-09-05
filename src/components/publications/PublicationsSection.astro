@@ -5,7 +5,6 @@ import { PROFILE } from "@site-config"
 import { formatCount } from "@/lib/plural"
 import { loadAllPublications } from "@/lib/publications/loader"
 import { slugify } from "@/lib/string-manipulation"
-import CommonLayout from "@/layouts/CommonLayout.astro"
 import Dropdown from "@/components/base/Dropdown.astro"
 import Icon from "@/components/base/Icon.astro"
 import Link from "@/components/base/Link.astro"
@@ -57,13 +56,7 @@ const publicationStructuredData = {
 }
 ---
 
-<CommonLayout
-  title="Publications"
-  description="Publications, preprints, and conference tutorials"
-  breadcrumbs={[{ label: "Publications", icon: "research" }]}
-  prose={false}
-  celestial
->
+<Section title="Publications" id="publications" class="publications-section">
   <script
     is:inline
     type="application/ld+json"
@@ -156,7 +149,7 @@ const publicationStructuredData = {
     {allPublicationsFlat.length > 0 ? (
         <CardGroup>
           {allPublicationsFlat.map((pub: ProcessedPublication) => (
-            <PubCard pub={pub} />
+            <PubCard pub={pub} instance="relevance" />
           ))}
         </CardGroup>
       ) : (
@@ -175,7 +168,7 @@ const publicationStructuredData = {
             <Section title={year.toString()}>
               <CardGroup>
                 {publicationsByYear[year].map((pub: ProcessedPublication) => (
-                  <PubCard pub={pub} />
+                  <PubCard pub={pub} instance={`year-${year}`} />
                 ))}
               </CardGroup>
             </Section>
@@ -188,7 +181,7 @@ const publicationStructuredData = {
         </div>
       )}
   </div>
-</CommonLayout>
+</Section>
 
 <script>
   import { initChipFilter } from "@/lib/chip-filter"

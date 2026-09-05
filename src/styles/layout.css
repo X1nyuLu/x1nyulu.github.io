@@ -52,6 +52,7 @@
 html {
   scrollbar-gutter: stable;
   overflow-x: clip;
+  scroll-behavior: smooth;
 
   @media (width < 64rem) {
     --bar-nav-height: calc(2rem + 2 * var(--space-2xs) + 2px);
@@ -65,5 +66,11 @@ html {
     &:has(page-toc) {
       --bar-toc-height: calc(1.5 * var(--step--1) + 2 * var(--space-2xs) + 2px);
     }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
   }
 }

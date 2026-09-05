@@ -1,31 +1,47 @@
 ---
 import { getCollection } from "astro:content"
 
-import CommonLayout from "@/layouts/CommonLayout.astro"
+import Section from "@/components/layout/Section.astro"
 import ExperienceTimeline from "@/components/timeline/ExperienceTimeline.astro"
 
 const experience = await getCollection("experience")
 ---
 
-<CommonLayout
-  title="Curriculum Vitae"
-  description="Research experience and education of Xinyu Lu."
->
-  <p>
+<Section title="CV" id="cv" class="cv-section">
+  <p class="cv-intro">
     I work on molecular AI, vibrational spectroscopy, and geometric deep
-    learning. For research outputs and artifacts, see my
-    <a href="/publications">publication list</a>.
+    learning.
   </p>
-  <h2>Experience & education</h2>
+
+  <h3>Experience & education</h3>
   <ExperienceTimeline entries={experience} />
-  <h2>Research focus</h2>
+
+  <h3>Research focus</h3>
   <ul>
     <li>Spectrum–structure modeling and molecular generation</li>
     <li>Molecular foundation models and equivariant neural networks</li>
     <li>Raman and infrared spectroscopy for scientific discovery</li>
   </ul>
-  <p>
+
+  <p class="cv-note">
     A downloadable PDF version will be added after a privacy review. For the
     latest information, please use this web CV.
   </p>
-</CommonLayout>
+</Section>
+
+<style>
+  .cv-intro,
+  .cv-note {
+    color: var(--muted-foreground);
+  }
+
+  h3 {
+    margin-block: var(--space-xs) 0;
+    font-size: var(--step-1);
+    font-weight: var(--font-weight-medium);
+  }
+
+  ul {
+    margin-block: 0;
+  }
+</style>
