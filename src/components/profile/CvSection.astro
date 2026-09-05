@@ -9,29 +9,16 @@ const experience = await getCollection("experience")
 
 <Section title="CV" id="cv" class="cv-section">
   <p class="cv-intro">
-    I work on molecular AI, vibrational spectroscopy, and geometric deep
-    learning.
+    Research and training across molecular AI, vibrational spectroscopy, and
+    geometric deep learning.
   </p>
 
   <h3>Experience & education</h3>
   <ExperienceTimeline entries={experience} />
-
-  <h3>Research focus</h3>
-  <ul>
-    <li>Spectrum–structure modeling and molecular generation</li>
-    <li>Molecular foundation models and equivariant neural networks</li>
-    <li>Raman and infrared spectroscopy for scientific discovery</li>
-  </ul>
-
-  <p class="cv-note">
-    A downloadable PDF version will be added after a privacy review. For the
-    latest information, please use this web CV.
-  </p>
 </Section>
 
 <style>
-  .cv-intro,
-  .cv-note {
+  .cv-intro {
     color: var(--muted-foreground);
   }
 
@@ -39,9 +26,5 @@ const experience = await getCollection("experience")
     margin-block: var(--space-xs) 0;
     font-size: var(--step-1);
     font-weight: var(--font-weight-medium);
-  }
-
-  ul {
-    margin-block: 0;
   }
 </style>

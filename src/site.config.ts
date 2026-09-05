@@ -8,6 +8,7 @@ import type {
 
 export const SITE: SiteConfig = {
   title: "Xinyu Lu",
+  homeTitle: "Xinyu Lu — Molecular AI & Vibrational Spectroscopy",
   description:
     "Molecular AI research across vibrational spectroscopy, molecular generation, and geometric learning.",
   href: "https://x1nyulu.github.io",

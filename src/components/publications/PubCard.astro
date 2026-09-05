@@ -18,18 +18,25 @@ interface Props {
   pub: ProcessedPublication
   filterableTags?: boolean
   instance?: string
+  compact?: boolean
 }
 
-const { pub, filterableTags = true, instance = "default" } = Astro.props
+const {
+  pub,
+  filterableTags = true,
+  instance = "default",
+  compact = false,
+} = Astro.props
 const publicationId = `publication-${instance}-${slugify(pub.title)}-${pub.year ?? "unknown"}`
 const hiddenAuthorsId = `${publicationId}-authors`
 const imageDialogId = `${publicationId}-image`
-const tocImage = pub.selected ? pub.image : undefined
+const tocImage = pub.selected && !compact ? pub.image : undefined
 ---
 
 <Card
-  selected={pub.selected}
-  class="publication-card"
+  selected={pub.selected && !compact}
+  padding={compact ? "compact" : "default"}
+  class={`publication-card${compact ? " publication-card-compact" : ""}`}
   data-pub-year={pub.year ?? ""}
   data-pub-selected={pub.selected ? "true" : "false"}
   data-pub-author-position={pub.authorPosition ?? Infinity}
@@ -62,9 +69,11 @@ const tocImage = pub.selected ? pub.image : undefined
   <div class="publication-body">
     <CardHeader>
       <div class="publication-labels">
-        <Badge variant={pub.status === "Published" ? "default" : "muted"}>
-          {pub.status}
-        </Badge>
+        {(!compact || pub.status === "Preprint") && (
+            <Badge variant={pub.status === "Published" ? "default" : "muted"}>
+              {pub.status}
+            </Badge>
+          )}
         {pub.authorRole && <Badge variant="accent">{pub.authorRole}</Badge>}
         {pub.award && <span class="publication-award">🏆 {pub.award}</span>}
       </div>
@@ -107,6 +116,13 @@ const tocImage = pub.selected ? pub.image : undefined
             </span>
           )}
       </div>
+
+      {pub.equalContributionNote && (
+          <p
+            class="publication-contribution-note"
+            set:html={pub.equalContributionNote}
+          />
+        )}
 
       {(pub.publisher || pub.year) && (
           <div class="bibliography-details">
@@ -153,7 +169,7 @@ const tocImage = pub.selected ? pub.image : undefined
         ))}
     </CardFooter>
 
-    {pub.keywords && pub.keywords.length > 0 && (
+    {!compact && pub.keywords && pub.keywords.length > 0 && (
         <CardFooter class="publication-tags">
           {pub.keywords.map((keyword: string) =>
             filterableTags ? (
@@ -210,6 +226,10 @@ const tocImage = pub.selected ? pub.image : undefined
   .publication-card {
     --card-padding: var(--space-xs) var(--space-s);
     --card-gap: var(--space-2xs);
+  }
+
+  .publication-card-compact {
+    --card-gap: var(--space-3xs);
   }
 
   .publication-body {
@@ -388,9 +408,39 @@ const tocImage = pub.selected ? pub.image : undefined
   }
 
   .bibliography-authors,
-  .bibliography-details {
+  .bibliography-details,
+  .publication-contribution-note {
     color: var(--muted-foreground);
     font-size: var(--step--1);
+  }
+
+  .publication-contribution-note {
+    margin: 0;
+  }
+
+  @media (width >= 40rem) {
+    .publication-card-compact .publication-body {
+      display: grid;
+      grid-template-areas:
+        "header actions"
+        "content actions";
+      grid-template-columns: minmax(0, 1fr) auto;
+      align-items: center;
+      column-gap: var(--space-s);
+    }
+
+    .publication-card-compact [data-slot="card-header"] {
+      grid-area: header;
+    }
+
+    .publication-card-compact [data-slot="card-content"] {
+      grid-area: content;
+    }
+
+    .publication-card-compact .publication-actions {
+      grid-area: actions;
+      justify-content: flex-end;
+    }
   }
 
   .publication-publisher {

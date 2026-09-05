@@ -11,8 +11,29 @@ import {
   parsePublicationKeywords,
   sortPublications,
   sortPublicationsByRelevance,
+  type Publication,
 } from "./utils"
 import bibContent from "/src/content/publications/main.bib?raw"
+
+function countPublicationKeywords(publications: Publication[]) {
+  const keywordCounts = new Map<string, number>()
+
+  for (const publication of publications) {
+    const expandedKeywords = expandHierarchicalKeywords(
+      parsePublicationKeywords(publication.keywords),
+    )
+    for (const keyword of expandedKeywords) {
+      keywordCounts.set(keyword, (keywordCounts.get(keyword) || 0) + 1)
+    }
+  }
+
+  return [...keywordCounts.entries()]
+    .map(([keyword, count]) => ({ keyword, count }))
+    .sort((a, b) => {
+      const countDiff = b.count - a.count
+      return countDiff !== 0 ? countDiff : a.keyword.localeCompare(b.keyword)
+    })
+}
 
 /**
  * Load and process all publications grouped by year
@@ -25,7 +46,6 @@ export async function loadAllPublications() {
 
     const processedPublicationsByYear: Record<string, any[]> = {}
     const yearsSet = new Set<number>()
-    const keywordCounts = new Map<string, number>()
 
     for (const pub of sorted) {
       const year = pub.year || 0
@@ -39,13 +59,6 @@ export async function loadAllPublications() {
         getPublicationData(pub, PUB_CONFIG),
       )
       yearsSet.add(year)
-
-      const expandedKeywords = expandHierarchicalKeywords(
-        parsePublicationKeywords(pub.keywords),
-      )
-      for (const kw of expandedKeywords) {
-        keywordCounts.set(kw, (keywordCounts.get(kw) || 0) + 1)
-      }
     }
 
     const years = Array.from(yearsSet).sort((a, b) => b - a)
@@ -58,20 +71,25 @@ export async function loadAllPublications() {
     const allPublicationsFlat = relevanceSorted.map((pub) =>
       getPublicationData(pub, PUB_CONFIG),
     )
+    const selectedPublications = relevanceSorted
+      .filter((pub) => pub.selected === true)
+      .map((pub) => getPublicationData(pub, PUB_CONFIG))
+    const morePublicationEntries = sorted.filter((pub) => pub.selected !== true)
+    const morePublications = morePublicationEntries.map((pub) =>
+      getPublicationData(pub, PUB_CONFIG),
+    )
 
-    // Sort keywords by count (descending) then name (ascending), like blog tags
-    const allKeywords = [...keywordCounts.entries()]
-      .map(([keyword, count]) => ({ keyword, count }))
-      .sort((a, b) => {
-        const countDiff = b.count - a.count
-        return countDiff !== 0 ? countDiff : a.keyword.localeCompare(b.keyword)
-      })
+    const allKeywords = countPublicationKeywords(sorted)
+    const moreKeywords = countPublicationKeywords(morePublicationEntries)
 
     return {
       publicationsByYear: processedPublicationsByYear,
       years,
       allPublicationsFlat,
       allKeywords,
+      selectedPublications,
+      morePublications,
+      moreKeywords,
     }
   } catch (error) {
     console.error("Error loading publications:", error)
@@ -80,6 +98,9 @@ export async function loadAllPublications() {
       years: [],
       allPublicationsFlat: [],
       allKeywords: [] as { keyword: string; count: number }[],
+      selectedPublications: [],
+      morePublications: [],
+      moreKeywords: [] as { keyword: string; count: number }[],
     }
   }
 }

@@ -11,6 +11,8 @@ import type { ProfileLinkType } from "@icon-config"
 export const SiteConfigSchema = z.object({
   /** Site metadata */
   title: z.string(),
+  /** Optional standalone title for the home page and social previews. */
+  homeTitle: z.string().optional(),
   /** To be used as meta description or description tag in head. <= 100 characters */
   description: z.string().max(100),
   href: z.url(),
