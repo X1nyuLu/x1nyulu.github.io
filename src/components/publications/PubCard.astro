@@ -24,6 +24,7 @@ const { pub, filterableTags = true, instance = "default" } = Astro.props
 const publicationId = `publication-${instance}-${slugify(pub.title)}-${pub.year ?? "unknown"}`
 const hiddenAuthorsId = `${publicationId}-authors`
 const imageDialogId = `${publicationId}-image`
+const tocImage = pub.selected ? pub.image : undefined
 ---
 
 <Card
@@ -33,9 +34,9 @@ const imageDialogId = `${publicationId}-image`
   data-pub-selected={pub.selected ? "true" : "false"}
   data-pub-author-position={pub.authorPosition ?? Infinity}
   data-pub-keywords={pub.expandedKeywords?.map((k) => slugify(k)).join(",") ?? ""}
-  data-has-image={pub.image ? "true" : undefined}
+  data-has-image={tocImage ? "true" : undefined}
 >
-  {pub.image && (
+  {tocImage && (
       <div class="publication-media">
         <button
           class="publication-image-trigger"
@@ -46,7 +47,7 @@ const imageDialogId = `${publicationId}-image`
           data-publication-image-open={imageDialogId}
         >
           <img
-            src={pub.image}
+            src={tocImage}
             alt={pub.imageAlt ?? `Visual summary for “${pub.title}”`}
             width="1200"
             height="720"
@@ -171,7 +172,7 @@ const imageDialogId = `${publicationId}-image`
   </div>
 </Card>
 
-{pub.image && (
+{tocImage && (
     <dialog
       id={imageDialogId}
       class="publication-image-dialog"
@@ -190,7 +191,7 @@ const imageDialogId = `${publicationId}-image`
         </button>
       </form>
       <img
-        src={pub.image}
+        src={tocImage}
         alt={pub.imageAlt ?? `Visual summary for “${pub.title}”`}
         data-no-zoom
       />
