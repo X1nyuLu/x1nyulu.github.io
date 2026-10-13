@@ -43,7 +43,8 @@ interface CitationEntry {
   [key: string]: unknown
 }
 
-const BIBTEX_EXCLUDED_FIELD_PATTERN = /^(?:selected|equal|authorrole|image)/i
+const BIBTEX_EXCLUDED_FIELD_PATTERN =
+  /^(?:selected|status|equal|authorrole|image)/i
 
 /** Publication return type - normalized fields plus flexible custom metadata/link fields. */
 export interface Publication {
@@ -66,6 +67,7 @@ export interface Publication {
   image?: string
   imagealt?: string
   authorrole?: string
+  status?: string
   arxiv?: string
   eprint?: string
   venue?: string
@@ -645,7 +647,12 @@ export function getPublicationData(
     doi: normalizedDoi,
     arxiv: publication.arxiv,
     entryType: publication.entryType,
-    status: isPreprint ? "Preprint" : "Published",
+    status:
+      publication.status?.trim().toLowerCase() === "accepted"
+        ? "Accepted"
+        : isPreprint
+          ? "Preprint"
+          : "Published",
     authorRole,
     mainUrl: mainUrl || undefined,
     authorData: {

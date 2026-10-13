@@ -25,6 +25,7 @@ const METADATA_FIELDS = [
   "award",
   "eprint",
   "selected",
+  "status",
   "equalfirst",
   "equalsecond",
   "equalthird",

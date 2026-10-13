@@ -312,7 +312,7 @@ export const ProcessedPublicationSchema = z.object({
   doi: z.string().optional(),
   arxiv: z.string().optional(),
   entryType: z.string().optional(),
-  status: z.enum(["Published", "Preprint"]),
+  status: z.enum(["Published", "Accepted", "Preprint"]),
   authorRole: z.enum(["First author", "Co-first author"]).optional(),
 
   // Main URL (derived from doi, url, or other primary link)

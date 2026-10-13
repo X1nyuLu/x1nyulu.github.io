@@ -69,8 +69,8 @@ const tocImage = pub.selected && !compact ? pub.image : undefined
   <div class="publication-body">
     <CardHeader>
       <div class="publication-labels">
-        {(!compact || pub.status === "Preprint") && (
-            <Badge variant={pub.status === "Published" ? "default" : "muted"}>
+        {(!compact || pub.status !== "Published") && (
+            <Badge variant={pub.status === "Preprint" ? "muted" : "default"}>
               {pub.status}
             </Badge>
           )}
